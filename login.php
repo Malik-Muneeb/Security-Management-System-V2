@@ -46,13 +46,16 @@ if (isset($_POST["btnLogin"])) {
         if ($recordsFound > 0) {
             $row = mysqli_fetch_assoc($result);
             $isAdmin = $row["isadmin"];
-            $_SESSION["user"]=$row["login"];
+            $_SESSION["user"]=$row["name"];
+            $_SESSION["isAdmin"]=$isAdmin;
             if($userid==1)
-                header("Location: home.php?id=".$isAdmin);
+                header("Location: home.php");
             else
-                header("Location: home.php?id=".$isAdmin);
-        } else
+                header("Location: home.php");
+        } else {
             $error = "Invalid login or Password";
+            $_SESSION["user"]=null;
+        }
     }
 }
 ?>
