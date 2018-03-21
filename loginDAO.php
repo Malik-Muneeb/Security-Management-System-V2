@@ -12,6 +12,7 @@ if (isset($_POST["btnLogin"])) {
         if ($recordsFound > 0) {
             $row = mysqli_fetch_assoc($result);
             $isAdmin = $row["isadmin"];
+            $_SESSION["userId"]=$row["userid"];
             $_SESSION["user"]=$row["name"];
             $_SESSION["isAdmin"]=$isAdmin;
             if($userid==1)
