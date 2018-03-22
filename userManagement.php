@@ -3,6 +3,9 @@ session_start();
 require('conn.php');
 $login=""; $password=""; $name="";
 $email=""; $error="";
+$editId=$_GET["edit"];
+if($editId)
+    include ("editDAO.php");
 ?>
 <html>
 <head>
@@ -65,12 +68,12 @@ if($_SESSION["isAdmin"]==1)
         <span>Name: </span> <input type="text" id="txtName" name="txtName" value="<?php echo ($name);?>"><br>
         <span>Email: </span> <input type="email" id="txtEmail" name="txtEmail" value="<?php echo ($email);?>"><br>
         <span>Country: </span> <select name="cmbCountries" id="cmbCountries">
-            <option value="0">--Select--</option>
-            <option value="1">Pakistan</option>
-            <option value="2">India</option>
-            <option value="3">China</option>
+            <option <?php if($countryId==0){ ?> selected <?php } ?> value="0">--Select--</option>
+            <option <?php if($countryId==1){ ?> selected <?php } ?> value="1">Pakistan</option>
+            <option <?php if($countryId==2){ ?> selected <?php } ?> value="2">India</option>
+            <option <?php if($countryId==3){ ?> selected <?php } ?> value="3">China</option>
         </select><br>
-        <br><input type="checkbox" name="isAdmin" style="margin-left: -130px;" >
+        <br><input <?php if($isAdmin==1){ ?> checked <?php } ?> type="checkbox" name="isAdmin" style="margin-left: -130px;" >
         <Span style="margin-left: -130px;"><b>Is He/She Admin?</b></b></Span><br>
         <span id="errorSpan" style="color:red"><?php echo($error); ?></span>
         <input type="submit" id="btnSave" name="btnSave" value="Save">

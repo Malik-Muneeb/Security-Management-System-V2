@@ -35,7 +35,7 @@ if(isset($_POST["btnShow"])) {
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td><a href=""> Delete</a></td>
-                <td><a href=""> Delete</a></td>
+                <td><a href="userManagement.php?edit=<?php echo $row["userid"];?>"> Edit</a></td>
             </tr>
             <?php
         }
