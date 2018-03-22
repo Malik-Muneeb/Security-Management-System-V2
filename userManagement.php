@@ -43,6 +43,9 @@ function main() {
         }
         return true;
     }
+    $("#reset").click(function(){
+        $('userForm')[0].reset();
+    });
 }
 </script>
 <?php
@@ -71,9 +74,15 @@ if($_SESSION["isAdmin"]==1)
         <Span style="margin-left: -130px;"><b>Is He/She Admin?</b></b></Span><br>
         <span id="errorSpan" style="color:red"><?php echo($error); ?></span>
         <input type="submit" id="btnSave" name="btnSave" value="Save">
-        <input type="button" id="btnClear" name="btnClear" value="Clear">
+        <input type="reset" id="btnClear" name="btnClear" value="Clear">
 	</form>
-    </div>
+
+    <form method="post" action="showRecords.php">
+        <div style="float:left;margin-left:20px;">
+          <input type="submit" name="btnShow" value="Show Records" >
+        </div>
+    </form>
+</div>
    
 </body>
 </html>
