@@ -1,7 +1,17 @@
 <?php
 session_start();
 include ("conn.php");
-include ("addRoleDAO.php");
+$name=""; $description="";  $editId=0;
+if(isset($_GET["edit"])) {
+    if($_GET["edit"]) {
+        $editId=$_GET["edit"];
+        include ("roleEditDAO.php");
+        include ("updateEditDAO.php");
+    }
+}
+
+if($editId==0)
+    include ("addRoleDAO.php");
 ?>
 <html>
 <head>
@@ -36,10 +46,10 @@ if($_SESSION["isAdmin"]==1)
     include("adminMenu.php");
 ?>
 <div>
-    <form class="container1" method="post" action="roleManagement.php" name="roleForm" style="float:left;">
+    <form class="container1" method="post" action="roleManagement.php?edit=<?php echo $editId;?>" name="roleForm" style="float:left;">
         <h1>Role Management</h1>
-        <span>Role Name: </span> <input type="text" name="txtName" id="txtName"><br>
-        <span>Description: </span> <input type="text" name="txtDesc" id="txtDesc"><br>
+        <span>Role Name: </span> <input type="text" name="txtName" id="txtName" value="<?php echo $name;?>"><br>
+        <span>Description: </span> <input type="text" name="txtDesc" id="txtDesc" value="<?php echo $description;?>"><br>
         <input type="submit" id="btnSave" name="btnSave" value="Save">
         <input type="reset" id="btnClear" name="btnClear" value="Clear">
     </form>
