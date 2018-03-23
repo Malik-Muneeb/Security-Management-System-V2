@@ -17,8 +17,9 @@ if($editId==0)
 
 <html>
 <head>
-<title> Home </title>
-<link href="styles.css" rel="stylesheet">
+    <title> Home </title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 <script>
 function main() {
