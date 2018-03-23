@@ -16,6 +16,12 @@ if(isset($_POST["btnSave"])) {
             "createdby='".$createdBy."', isadmin=$isAdmin where userid=$updateId";
     if (mysqli_query($conn, $sql)) {
         ?><script>alert("Record updated successfully");</script><?php
+        $login="";
+        $password="";
+        $name="";
+        $email="";
+        $countryId=0;
+        $isAdmin=0;
     } else {
         ?><script>alert("Error updating record");</script><?php
     }

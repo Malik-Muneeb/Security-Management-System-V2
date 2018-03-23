@@ -4,13 +4,29 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 </html>
+<script>
+    function deleteMsg() {
+        if(confirm("Do you want to continue ?"))
+            return true;
+        return false;
+    }
+</script>
 
 <?php
 session_start();
 include ("conn.php");
 if($_SESSION["isAdmin"]==1)
     include("adminMenu.php");
-if(isset($_POST["btnShow"])) {
+if(isset($_GET["delete"])){
+    $deleteId=$_GET["delete"];
+   $sql="DELETE FROM users WHERE userid=$deleteId";
+   if(mysqli_query($conn,$sql)){
+       ?><script>alert("Record deleted successfully");</script><?php
+    } else {
+        ?><script>alert("Error deleting record");</script><?php
+    }
+}
+if(isset($_POST["btnShow"]) || isset($_GET["delete"])) {
     $sql = "SELECT * FROM users";
     $result = mysqli_query($conn, $sql);
     $recordsFound = mysqli_num_rows($result);
@@ -34,7 +50,7 @@ if(isset($_POST["btnShow"])) {
                 <td><?php echo $row['userid']; ?></td>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['email']; ?></td>
-                <td><a href=""> Delete</a></td>
+                <td><a id="deleteRecord" onclick="return deleteMsg()" href="showRecords.php?delete=<?php echo $row["userid"];?>"> Delete</a></td>
                 <td><a href="userManagement.php?edit=<?php echo $row["userid"];?>"> Edit</a></td>
             </tr>
             <?php

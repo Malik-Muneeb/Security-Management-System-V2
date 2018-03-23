@@ -1,5 +1,4 @@
 <?php
-
 $sql = "SELECT * FROM users WHERE userid='".$editId."'";
 $result = mysqli_query($conn, $sql);
 $recordsFound = mysqli_num_rows($result);

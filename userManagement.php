@@ -4,15 +4,17 @@ require('conn.php');
 $login=""; $password=""; $name="";
 $email=""; $error=""; $editId=0;
 if(isset($_GET["edit"])) {
-    $editId=$_GET["edit"];
-    echo $editId;
     if($_GET["edit"]) {
+        $editId=$_GET["edit"];
         include ("editDAO.php");
         include ("updateDAO.php");
     }
 }
 
+if($editId==0)
+    include ("userAddDAO.php");
 ?>
+
 <html>
 <head>
 <title> Home </title>
@@ -43,7 +45,7 @@ function main() {
             return false;
         }
         else if (userObj.email == ""){
-            alert("Enter Email")
+            alert("Enter Email");
             return false;
         }
         else if (userObj.country == "--Select--"){
@@ -52,21 +54,17 @@ function main() {
         }
         return true;
     }
-    $("#reset").click(function(){
-        $('userForm')[0].reset();
-    });
 }
+$("#btnClear").click(function(){
+    $('userForm')[0].reset();
+});
 </script>
-<?php
-if($editId==0)
-    include ("userAddDAO.php");
-?>
 <body onload="main();">
+
 <?php
 if($_SESSION["isAdmin"]==1)
     include("adminMenu.php");
 ?>
-
 <div>
 	<form class="container1" method="POST" name="userForm" action="userManagement.php?edit=<?php echo $editId;?>" style="float:left;">
         <h1>Users</h1>
