@@ -10,7 +10,7 @@ if(isset($_POST["btnSave"])) {
         ?><script>alert("Record updated successfully");</script><?php
         $name="";
         $description="";
-        
+
     } else {
         ?><script>alert("Error updating record");</script><?php
     }

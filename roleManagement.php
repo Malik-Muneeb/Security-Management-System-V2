@@ -15,7 +15,7 @@ if($editId==0)
 ?>
 <html>
 <head>
-    <title> Home </title>
+    <title> Role Management </title>
     <link href="styles.css" rel="stylesheet">
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script>
