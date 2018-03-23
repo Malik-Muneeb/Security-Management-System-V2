@@ -2,43 +2,42 @@
 session_start();
 include("conn.php");
 $roleId = 0;
-$perId = 0;
+$userId = 0;
 $roleName = "--Select--";
-$perName = "--Select--";
+$userName = "--Select--";
 $editId = 0;
 if (isset($_GET["edit"])) {
     if ($_GET["edit"]) {
         $editId = $_GET["edit"];
-        include("rolePerEditDAO.php");
-        include("updateRolePerDAO.php");
+        include("userRoleEditDAO.php");
+        include("updateUserRoleDAO.php");
     }
 }
 if ($editId == 0)
-    include("addRolePerDAO.php");
+    include("addUserRoleDAO.php");
 ?>
 
 <html>
 <head>
-    <title> Role-Permission </title>
+    <title> User-Role </title>
     <link href="styles.css" rel="stylesheet">
     <script>
         function main() {
             var btnSave = document.getElementById("btnSave");
             btnSave.onclick = function () {
-                var rolePerObj = new Object();
+                var userRoleObj = new Object();
+                var user = document.getElementById("cmbUser");
+                userRoleObj.user = user.options[user.selectedIndex].text;
                 var role = document.getElementById("cmbRole");
-                rolePerObj.role = role.options[role.selectedIndex].text;
-                var per = document.getElementById("cmbPer");
-                rolePerObj.per = per.options[per.selectedIndex].text;
-                if (rolePerObj.role == "--Select--")
+                userRoleObj.role = role.options[role.selectedIndex].text;
+                if (userRoleObj.user == "--Select--")
+                    alert("First Select User.");
+                else if (userRoleObj.role == "--Select--")
                     alert("First Select Role.");
-                else if (rolePerObj.per == "--Select--")
-                    alert("First Select Permission.");
             }
         }
-
         $("#btnClear").click(function () {
-            $('rolePerForm')[0].reset();
+            $('userRoleForm')[0].reset();
         });
     </script>
 </head>
@@ -47,9 +46,8 @@ if ($editId == 0)
 <?php
 if ($_SESSION["isAdmin"] == 1)
     include("adminMenu.php");
-include("showRolePerDD.php");
+include("showUserRoleDD.php");
 ?>
-
 
 </body>
 </html>

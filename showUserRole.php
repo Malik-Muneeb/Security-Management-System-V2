@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Roles-Permission </title>
+    <title> User-Role </title>
     <link href="styles.css" rel="stylesheet">
 </head>
 </html>
@@ -19,7 +19,7 @@ if($_SESSION["isAdmin"]==1)
     include("adminMenu.php");
 if(isset($_GET["delete"])){
     $deleteId=$_GET["delete"];
-    $sql="DELETE FROM role_permission WHERE id=$deleteId";
+    $sql="DELETE FROM user_role WHERE id=$deleteId";
     if(mysqli_query($conn,$sql)){
         ?><script>alert("Record deleted successfully");</script><?php
     } else {
@@ -27,7 +27,7 @@ if(isset($_GET["delete"])){
     }
 }
 if(isset($_POST["btnShow"]) || isset($_GET["delete"])) {
-    $sql = "SELECT * FROM role_permission";
+    $sql = "SELECT * FROM user_role";
     $result = mysqli_query($conn, $sql);
     $recordsFound = mysqli_num_rows($result);
     if ($recordsFound > 0) {
@@ -36,8 +36,8 @@ if(isset($_POST["btnShow"]) || isset($_GET["delete"])) {
             <thead>
             <tr>
                 <th>ID</th>
+                <th>User</th>
                 <th>Role</th>
-                <th>Permission</th>
                 <th>Delete</th>
                 <th>Edit</th>
             </tr>
@@ -46,22 +46,22 @@ if(isset($_POST["btnShow"]) || isset($_GET["delete"])) {
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 $roleId=$row["roleid"];
-                $perId=$row["permissionid"];
+                $userId=$row["userid"];
                 $sql = "SELECT * FROM roles WHERE roleid=$roleId";
                 $result1 = mysqli_query($conn, $sql);
                 $row1 = mysqli_fetch_assoc($result1);
                 $roleName=$row1["name"];
-                $sql = "SELECT * FROM permissions WHERE permissionid=$perId";
+                $sql = "SELECT * FROM users WHERE userid=$userId";
                 $result1 = mysqli_query($conn, $sql);
                 $row1 = mysqli_fetch_assoc($result1);
-                $perName=$row1["name"];
+                $userName=$row1["name"];
                 ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $userName; ?></td>
                     <td><?php echo $roleName; ?></td>
-                    <td><?php echo $perName; ?></td>
-                    <td><a id="deleteRecord" onclick="return deleteMsg()" href="showRolePer.php?delete=<?php echo $row["id"];?>"> Delete</a></td>
-                    <td><a href="rolePermissionManagement.php?edit=<?php echo $row["id"];?>"> Edit</a></td>
+                    <td><a id="deleteRecord" onclick="return deleteMsg()" href="showUserRole.php?delete=<?php echo $row["id"];?>"> Delete</a></td>
+                    <td><a href="userRoleManagement.php?edit=<?php echo $row["id"];?>"> Edit</a></td>
                 </tr>
                 <?php
             }
