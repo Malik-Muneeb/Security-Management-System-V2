@@ -2,8 +2,6 @@
 if(isset($_POST["btnSave"])) {
     $roleId=$_POST["cmbRole"];
     $perId=$_POST["cmbPer"];
-    echo $roleId;
-    echo $perId;
     if($roleId==0 && $perId==0)
         $error="Please Select All Information";
     else {

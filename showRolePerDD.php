@@ -3,7 +3,7 @@
         <h1>Role-Permissions Management</h1>
 
         <span>Role: </span><select name="cmbRole" id="cmbRole">
-            <option value="0">--Select--</option>
+            <option value="<?php echo $roleId;?>"><?php echo $roleName?></option>
             <?php
             $sql = "SELECT * FROM roles";
             $result = mysqli_query($conn, $sql);
@@ -18,7 +18,7 @@
             ?>
         </select><br>
         <span>Permission: </span> <select name="cmbPer" id="cmbPer">
-            <option value="0">--Select--</option>
+            <option value="<?php echo $perId;?>"><?php echo $perName?></option>
             <?php
             $sql = "SELECT * FROM permissions";
             $result = mysqli_query($conn, $sql);

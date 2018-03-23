@@ -1,16 +1,20 @@
 <?php
 session_start();
-include ("conn.php");
-$roleId=0; $perId=0;  $editId=0;
-if(isset($_GET["edit"])) {
+include("conn.php");
+$roleId = 0;
+$perId = 0;
+$roleName = "--Select--";
+$perName = "--Select";
+$editId = 0;
+if (isset($_GET["edit"])) {
     if ($_GET["edit"]) {
         $editId = $_GET["edit"];
-        //include ("roleEditDAO.php");
-        //include ("updateEditDAO.php");
+        include("rolePerEditDAO.php");
+        include("updateRolePerDAO.php");
     }
 }
-if($editId==0)
-    include ("addRolePerDAO.php");
+if ($editId == 0)
+    include("addRolePerDAO.php");
 ?>
 
 <html>
@@ -31,23 +35,19 @@ if($editId==0)
                 else if (rolePerObj.per == "--Select--")
                     alert("First Select Permission.");
             }
-
-            var btnClear = document.getElementById("btnClear");
-            btnClear.onclick = function () {
-                var role = document.getElementById("cmbRole");
-                role.options[role.selectedIndex].text = "--Select--";
-                var per = document.getElementById("cmbPer");
-                per.options[per.selectedIndex].text = "--Select--";
-            }
         }
+
+        $("#btnClear").click(function () {
+            $('rolePerForm')[0].reset();
+        });
     </script>
 </head>
 <body onload="main();">
 
 <?php
-if($_SESSION["isAdmin"]==1)
+if ($_SESSION["isAdmin"] == 1)
     include("adminMenu.php");
-include ("showRolePerDD.php");
+include("showRolePerDD.php");
 ?>
 
 

@@ -10,9 +10,6 @@ if(isset($_POST["btnSave"])) {
         ?><script>alert("Record updated successfully");</script><?php
         $name="";
         $description="";
-        $_GET["edit"]=0;
-        echo "hi";
-        echo $_GET["edit"];
     } else {
         ?><script>alert("Error updating record");</script><?php
     }
