@@ -11,7 +11,8 @@
                 while($row = mysqli_fetch_assoc($result)) {
                     $userId=$row["userid"];
                     $name=$row["name"];
-                    echo "<option value='".$userId."'>$name</option>";
+                    if($row["isadmin"]==0)
+                        echo "<option value='".$userId."'>$name</option>";
                 }
             }
             ?>
