@@ -32,10 +32,15 @@ if ($editId == 0)
                 rolePerObj.role = role.options[role.selectedIndex].text;
                 var per = document.getElementById("cmbPer");
                 rolePerObj.per = per.options[per.selectedIndex].text;
-                if (rolePerObj.role == "--Select--")
+                if (rolePerObj.role == "--Select--"){
                     alert("First Select Role.");
-                else if (rolePerObj.per == "--Select--")
+                    return false;
+                }
+                else if (rolePerObj.per == "--Select--"){
                     alert("First Select Permission.");
+                    return false
+                }
+                return true;
             }
         }
 

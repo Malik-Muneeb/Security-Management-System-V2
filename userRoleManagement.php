@@ -32,10 +32,15 @@ if ($editId == 0)
                 userRoleObj.user = user.options[user.selectedIndex].text;
                 var role = document.getElementById("cmbRole");
                 userRoleObj.role = role.options[role.selectedIndex].text;
-                if (userRoleObj.user == "--Select--")
+                if (userRoleObj.user == "--Select--"){
                     alert("First Select User.");
-                else if (userRoleObj.role == "--Select--")
+                    return false;
+                }
+                else if (userRoleObj.role == "--Select--"){
                     alert("First Select Role.");
+                    return false;
+                }
+                return true;
             }
         }
         $("#btnClear").click(function () {

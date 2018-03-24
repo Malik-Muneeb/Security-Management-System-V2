@@ -28,10 +28,15 @@ if($editId==0)
                 roleObj.roleName = document.getElementById("txtName").value;
                 roleObj.roleDesc = document.getElementById("txtDesc").value;
 
-                if (roleObj.roleName == "")
+                if (roleObj.roleName == ""){
                     alert("Enter Role!");
-                else if (roleObj.roleDesc == "")
+                    return false;
+                }
+                else if (roleObj.roleDesc == ""){
                     alert("Enter role's description");
+                    return false;
+                }
+                return true;
             }
         }
 

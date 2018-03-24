@@ -8,25 +8,25 @@ if(isset($_SESSION["user"])==false)
 <head>
 <title> Home </title>
 <link href="styles.css" rel="stylesheet">
-<head>
+</head>
 
 <body>
 <?php
-if($_SESSION["isAdmin"]==1) {
-    include("adminMenu.php");?>
-    <div>
-        <h1>Welcome <?php echo ($_SESSION["user"]); ?></h1>
-    </div>
-<?php
-}
-else {
-include("userMenu.php");?>
+if($_SESSION["isAdmin"]==1)
+    include("adminMenu.php");
+else
+    include("userMenu.php");
+?>
 <div>
     <h1>Welcome <?php echo ($_SESSION["user"]); ?></h1>
 </div>
+
 <?php
-}
+if($_SESSION["isAdmin"]==0)
+    include ("showUserInfoDAO.php");
+    //include ("showUserInfo.php");
 ?>
+
 
 
    

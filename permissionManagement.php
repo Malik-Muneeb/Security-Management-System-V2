@@ -27,10 +27,16 @@ if($editId==0)
                 var perObj = new Object();
                 perObj.perName = document.getElementById("txtName").value;
                 perObj.perDesc = document.getElementById("txtDesc").value;
-                if (perObj.perName == "")
+                if (perObj.perName == "") {
                     alert("Enter Permission!");
-                else if (perObj.perDesc == "")
+                    return false;
+                }
+
+                else if (perObj.perDesc == "") {
                     alert("Enter permissions's description");
+                    return false;
+                }
+                return true;
             }
         }
         $("#btnClear").click(function(){

@@ -1,12 +1,12 @@
-body {
+body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-form {
+form{
     border: 3px solid #f1f1f1;
 }
 
-input {
+input{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -15,7 +15,7 @@ input {
     box-sizing: border-box;
 }
 
-input[type="button"]{
+input[type='submit'],[type='reset']{
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -25,7 +25,11 @@ input[type="button"]{
     width: 100%;
 }
 
-input[type="button"]:hover {
+input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+input[type="reset"]:hover {
     opacity: 0.8;
 }
 
@@ -96,7 +100,7 @@ li a:hover:not(.active) {
 
 .rolePermission {
     border: 3px solid #f1f1f1;
-    float:center;
+
     margin-right: 800px;
 }
 

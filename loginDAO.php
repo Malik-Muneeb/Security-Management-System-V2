@@ -16,10 +16,7 @@ if (isset($_POST["btnLogin"])) {
             $_SESSION["user"]=$row["name"];
             $_SESSION["isAdmin"]=$isAdmin;
             include ("loginHistory.php");
-            if($isAdmin==1)
-                header("Location: home.php");
-            else
-                header("Location: home.php");
+            header("Location: home.php");
         } else {
             $error = "Invalid login or Password";
             $_SESSION["user"]=null;

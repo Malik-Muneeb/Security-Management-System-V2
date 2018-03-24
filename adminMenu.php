@@ -11,7 +11,7 @@ if(isset($_GET['logout'])==1)
 
 <div  class="menu">
        <ul>
-            <li> <a class="active"  href="home.php" >Home</a> </li>
+            <li> <a onclick="applyClass" href="home.php" >Home</a> </li>
             <li>  <a href="userManagement.php" >User Management</a> </li>
             <li> <a href="roleManagement.php" >Role Management</a> </li>
             <li> <a href="permissionManagement.php" >Permissions Management</a> </li>
