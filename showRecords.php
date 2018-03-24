@@ -14,6 +14,8 @@
 
 <?php
 session_start();
+if (isset($_SESSION["user"]) == false)
+    header("location: login.php");
 include ("conn.php");
 if($_SESSION["isAdmin"]==1)
     include("adminMenu.php");

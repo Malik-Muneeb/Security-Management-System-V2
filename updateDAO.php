@@ -6,7 +6,7 @@ if(isset($_POST["btnSave"])) {
     $password=$_POST["txtPassword"];
     $name=$_POST["txtName"];
     $email=$_POST["txtEmail"];
-    $country=$_POST["cmbCountries"];
+    $countryId=$_POST["cmbCountries"];
     if(isset($_POST["isAdmin"]))
         $isAdmin=1;
     else
@@ -21,6 +21,7 @@ if(isset($_POST["btnSave"])) {
         $name="";
         $email="";
         $countryId=0;
+        $countryName="--Select--";
         $isAdmin=0;
     } else {
         ?><script>alert("Error updating record");</script><?php

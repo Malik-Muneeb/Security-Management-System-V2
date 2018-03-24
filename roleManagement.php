@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_SESSION["user"]) == false)
+    header("location: login.php");
 include ("conn.php");
 $name=""; $description="";  $editId=0;
 if(isset($_GET["edit"])) {

@@ -19,6 +19,7 @@ if(isset($_POST["btnSave"])) {
         if (mysqli_query($conn, $sql) === TRUE) {
             $last_id = mysqli_insert_id($conn);
             $login=""; $password=""; $name="";
+            $countryName=""; $countryId=0;
             $email=""; $error="";
             ?><script>alert("Record is added successfully.");</script><?php
         } else {

@@ -1,8 +1,11 @@
 <?php
 session_start();
+if (isset($_SESSION["user"]) == false)
+    header("location: login.php");
 require('conn.php');
 $login=""; $password=""; $name="";
-$email=""; $error=""; $editId=0;
+$email=""; $countryId=0; $countryName="--Select--";
+$error=""; $editId=0;
 if(isset($_GET["edit"])) {
     if($_GET["edit"]) {
         $editId=$_GET["edit"];
@@ -74,10 +77,19 @@ if($_SESSION["isAdmin"]==1)
         <span>Name: </span> <input type="text" id="txtName" name="txtName" value="<?php echo ($name);?>"><br>
         <span>Email: </span> <input type="email" id="txtEmail" name="txtEmail" value="<?php echo ($email);?>"><br>
         <span>Country: </span> <select name="cmbCountries" id="cmbCountries">
-            <option <?php if(isset($countryId) && $countryId==0){ ?> selected <?php } ?> value="0">--Select--</option>
-            <option <?php if(isset($countryId) && $countryId==1){ ?> selected <?php } ?> value="1">Pakistan</option>
-            <option <?php if(isset($countryId) && $countryId==2){ ?> selected <?php } ?> value="2">India</option>
-            <option <?php if(isset($countryId) && $countryId==3){ ?> selected <?php } ?> value="3">China</option>
+            <option value="<?php echo $countryId;?>"><?php echo $countryName?></option>
+            <?php
+            $sql = "SELECT * FROM country";
+            $result = mysqli_query($conn, $sql);
+            $recordsFound = mysqli_num_rows($result);
+            if ($recordsFound > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    $countryId=$row["id"];
+                    $countryName=$row["name"];
+                    echo "<option value='".$countryId."'>$countryName</option>";
+                }
+            }
+            ?>
         </select><br>
         <br><input <?php if(isset($isAdmin) && $isAdmin==1){ ?> checked <?php } ?> type="checkbox" name="isAdmin" style="margin-left: -130px;" >
         <Span style="margin-left: -130px;"><b>Is He/She Admin?</b></b></Span><br>

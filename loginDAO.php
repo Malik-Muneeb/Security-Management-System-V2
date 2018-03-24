@@ -15,7 +15,8 @@ if (isset($_POST["btnLogin"])) {
             $_SESSION["userId"]=$row["userid"];
             $_SESSION["user"]=$row["name"];
             $_SESSION["isAdmin"]=$isAdmin;
-            if($userid==1)
+            include ("loginHistory.php");
+            if($isAdmin==1)
                 header("Location: home.php");
             else
                 header("Location: home.php");

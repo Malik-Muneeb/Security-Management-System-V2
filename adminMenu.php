@@ -17,6 +17,7 @@ if(isset($_GET['logout'])==1)
             <li> <a href="permissionManagement.php" >Permissions Management</a> </li>
             <li> <a  href="rolePermissionManagement.php" >Role-Permissions Assignment</a> </li>
             <li> <a href="userRoleManagement.php" >User-Role Assignment</a> </li>
+           <li> <a href="showLoginHistory.php" >Login History</a> </li>
            <li> <a href="?logout=1">Logout</a </li>
         </ul>
     </div>

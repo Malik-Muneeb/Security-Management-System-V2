@@ -1,7 +1,6 @@
 <?php
 $sql = "SELECT * FROM users WHERE userid='".$editId."'";
 $result = mysqli_query($conn, $sql);
-$recordsFound = mysqli_num_rows($result);
 if($row = mysqli_fetch_assoc($result)) {
     $userId=$row["userid"];
     $login=$row["login"];
@@ -12,6 +11,10 @@ if($row = mysqli_fetch_assoc($result)) {
     $createdOn=$row["createdon"];
     $createdBy=$row["createdby"];
     $isAdmin=$row["isadmin"];
+    $sql = "SELECT * FROM country WHERE id='".$countryId."'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $countryName=$row["name"];
 }
 
 ?>

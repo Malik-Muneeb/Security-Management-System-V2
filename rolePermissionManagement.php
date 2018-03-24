@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_SESSION["user"]) == false)
+    header("location: login.php");
 include("conn.php");
 $roleId = 0;
 $perId = 0;
